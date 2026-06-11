@@ -99,6 +99,7 @@ for inst in li:
     inst.export()
 
 
+
 # Custom Exceptions
 try:
     1/0
@@ -136,51 +137,53 @@ def n():
         print("close.. coonnn")
 
 class EmptyStorageError(Exception):
-pass
+    pass
+
+
 
 # очередь
-# ложим в конец
+# кладём в конец
 # достаем с начала
 class Storage:
-def __init__(self):
-self.__items = []
-def priemka(self, value):
-self.__items.append(value)
-print("Приемка товара на склад:", value)
-def otgruzka(self):
-if len(self.__items) == 0:
-raise EmptyStorageError("на складе закончился товар!")
+    def __init__(self):
+        self.__items = []
+    def priemka(self, value):
+        self.__items.append(value)
+        print("Приемка товара на склад:", value)
+    def otgruzka(self):
+        if len(self.__items) == 0:
+            raise EmptyStorageError("на складе закончился товар!")
 
-res = self.__items.pop(0)
-print("Отгрузка товара со склада:", res)
+        res = self.__items.pop(0)
+        print("Отгрузка товара со склада:", res)
 
 def get_items(self):
-return print(self.__items)
+    return print(self.__items)
 
 
 class App:
-def __init__(self, storage):
-self.__storage = storage
-def run(self):
-oper = input("1 приемка, 2 отгрузка, 3 вывод всех товаров на складе, 4 exit")
-while oper != "exit":
-if oper == "1":
-self.__storage.priemka(input("введи товар:"))
-elif oper == "2":
-try:
-self.__storage.otgruzka()
-except EmptyStorageError as e:
-print("Склад пуст!")
-else:
-print("Отгрузка прошла успешно.")
-elif oper == "3":
-self.__storage.get_items()
-elif oper == "exit":
-break
-else:
-print("не понимаю")
-oper = input("1 приемка, 2 отгрузка, 3 вывод всех товаров на складе, 4 exit")
-print("poka")
+    def __init__(self, storage):
+        self.__storage = storage
+    def run(self):
+        oper = input("1 приемка, 2 отгрузка, 3 вывод всех товаров на складе, 4 exit")
+        while oper != "exit":
+            if oper == "1":
+                self.__storage.priemka(input("введи товар:"))
+            elif oper == "2":
+                try:
+                    self.__storage.otgruzka()
+                except EmptyStorageError as e:
+                    print("Склад пуст!")
+                else:
+                    print("Отгрузка прошла успешно.")
+            elif oper == "3":
+                self.__storage.get_items()
+            elif oper == "exit":
+                break
+            else:
+                print("не понимаю")
+                oper = input("1 приемка, 2 отгрузка, 3 вывод всех товаров на складе, 4 exit")
+            print("poka")
 
 app = App(Storage())
 
