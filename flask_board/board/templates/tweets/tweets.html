@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h2>{% block title %}Tweets{% endblock title %}</h2>
+{% endblock header %}
+
+{% block content %}
+    {% for tweet in tweets %}
+        <article>
+            <p class="message">{{ tweet["content"] }}<p>
+            <aside>Posted by {{ tweet["author"] }} on {{ tweet["created"].strftime("%b %d, %Y at %I:%M%p") }}</aside>
+        </article>
+    {% endfor %}
+{% endblock content %}
