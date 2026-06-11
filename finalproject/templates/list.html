@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <table>
+        <thead>
+            <tr>
+                <td>Item</td>
+                <td>Quantity</td>
+                <td>Status</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    <td>{{ row["item"] }}</td>
+                    <td>{{ row["quantity"] }}</td>
+                    <td>{{ row["status"] }}</td>
+                </tr>
+            {% endfor %}
+            <tbody>
+            </table>
+{% endblock %}

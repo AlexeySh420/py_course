@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+    <form method="POST">
+        <input autocomplete="on" name="item" placeholder="Item" pattern="[A-Za-z]+">
+        <input type="number" step="1" min="1" autocomplete="off" name="quantity" placeholder="How many?">
+        <div class="button-container">
+            <button type="submit" name="action" value="add">Add</button>
+            <button type="submit" name="action" value="check">Check</button>
+            <button type="submit" name="action" value="remove">Remove</button>
+            <a href="list" class="button">List</a>
+        </div>
+    </form>
+{% endblock %}
